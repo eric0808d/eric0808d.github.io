@@ -55,63 +55,31 @@ overlay.addEventListener("click", testimonialsModalFunc);
 
 
 
-// custom select variables
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
+// project modal variables
+const projectCards = document.querySelectorAll("[data-project-open]");
+const projectModalContainer = document.querySelector("[data-project-modal-container]");
+const projectModalCloseBtn = document.querySelector("[data-project-modal-close-btn]");
+const projectOverlay = document.querySelector("[data-project-overlay]");
+const projectModalTitle = document.querySelector("[data-project-modal-title]");
+const projectModalSummary = document.querySelector("[data-project-modal-summary]");
+const projectModalWork = document.querySelector("[data-project-modal-work]");
 
-select.addEventListener("click", function () { elementToggleFunc(this); });
+const projectModalToggle = function () {
+  projectModalContainer.classList.toggle("active");
+  projectOverlay.classList.toggle("active");
+}
 
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-
+projectCards.forEach((card) => {
+  card.addEventListener("click", function () {
+    projectModalTitle.textContent = this.dataset.projectTitle;
+    projectModalSummary.textContent = this.dataset.projectSummary;
+    projectModalWork.textContent = this.dataset.projectWork;
+    projectModalToggle();
   });
-}
+});
 
-// filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
-
-const filterFunc = function (selectedValue) {
-
-  for (let i = 0; i < filterItems.length; i++) {
-
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
-    }
-
-  }
-
-}
-
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
-
-for (let i = 0; i < filterBtn.length; i++) {
-
-  filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    filterFunc(selectedValue);
-
-    lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
-    lastClickedBtn = this;
-
-  });
-
-}
+projectModalCloseBtn.addEventListener("click", projectModalToggle);
+projectOverlay.addEventListener("click", projectModalToggle);
 
 
 
