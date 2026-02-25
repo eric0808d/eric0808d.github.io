@@ -55,63 +55,93 @@ overlay.addEventListener("click", testimonialsModalFunc);
 
 
 
-// custom select variables
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
+// project modal variables
+const projectCards = document.querySelectorAll("[data-project-open]");
+const projectModalContainer = document.querySelector("[data-project-modal-container]");
+const projectModalCloseBtn = document.querySelector("[data-project-modal-close-btn]");
+const projectOverlay = document.querySelector("[data-project-overlay]");
+const projectModalTitle = document.querySelector("[data-project-modal-title]");
+const projectModalDescription = document.querySelector("[data-project-modal-description]");
+const projectModalSummary = document.querySelector("[data-project-modal-summary]");
+const projectModalWork = document.querySelector("[data-project-modal-work]");
+const projectFeaturedImage = document.querySelector("[data-project-featured-image]");
+const projectFeaturedTrigger = document.querySelector("[data-project-featured-trigger]");
+const projectModalThumbs = document.querySelector("[data-project-modal-thumbs]");
+const imageViewerContainer = document.querySelector("[data-image-viewer-container]");
+const imageViewerOverlay = document.querySelector("[data-image-viewer-overlay]");
+const imageViewerCloseBtn = document.querySelector("[data-image-viewer-close-btn]");
+const imageViewerImg = document.querySelector("[data-image-viewer-img]");
 
-select.addEventListener("click", function () { elementToggleFunc(this); });
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-
-  });
+const projectModalToggle = function () {
+  projectModalContainer.classList.toggle("active");
+  projectOverlay.classList.toggle("active");
 }
 
-// filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
+const imageViewerToggle = function () {
+  imageViewerContainer.classList.toggle("active");
+  imageViewerOverlay.classList.toggle("active");
+}
 
-const filterFunc = function (selectedValue) {
+const renderProjectGallery = function (images, title) {
+  projectModalThumbs.innerHTML = "";
 
-  for (let i = 0; i < filterItems.length; i++) {
+  images.forEach((src, index) => {
+    const thumbBtn = document.createElement("button");
+    thumbBtn.type = "button";
+    thumbBtn.className = "project-thumb-btn";
+    thumbBtn.setAttribute("aria-label", `Ver imagen ${index + 1} de ${title}`);
 
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
+    if (index === 0) {
+      thumbBtn.classList.add("active");
+      projectFeaturedImage.src = src;
+      projectFeaturedImage.alt = `${title} - imagen principal`;
     }
 
-  }
+    thumbBtn.innerHTML = `<img src="${src}" alt="${title} - miniatura ${index + 1}" loading="lazy">`;
 
-}
+    thumbBtn.addEventListener("click", function () {
+      projectFeaturedImage.src = src;
+      projectFeaturedImage.alt = `${title} - imagen ${index + 1}`;
 
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
+      document.querySelectorAll(".project-thumb-btn").forEach((button) => {
+        button.classList.remove("active");
+      });
 
-for (let i = 0; i < filterBtn.length; i++) {
+      this.classList.add("active");
+    });
 
-  filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    filterFunc(selectedValue);
-
-    lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
-    lastClickedBtn = this;
-
+    projectModalThumbs.append(thumbBtn);
   });
-
 }
+
+projectCards.forEach((card) => {
+  card.addEventListener("click", function () {
+    const title = this.dataset.projectTitle;
+    const gallery = (this.dataset.projectGallery || "").split(",").map((img) => img.trim()).filter(Boolean);
+
+    projectModalTitle.textContent = title;
+    projectModalDescription.textContent = this.dataset.projectDescription || "Haz clic en una miniatura para ver la imagen completa.";
+    projectModalSummary.textContent = this.dataset.projectSummary;
+    projectModalWork.textContent = this.dataset.projectWork;
+
+    if (gallery.length) {
+      renderProjectGallery(gallery, title);
+    }
+
+    projectModalToggle();
+  });
+});
+
+projectFeaturedTrigger.addEventListener("click", function () {
+  imageViewerImg.src = projectFeaturedImage.src;
+  imageViewerImg.alt = projectFeaturedImage.alt;
+  imageViewerToggle();
+});
+
+projectModalCloseBtn.addEventListener("click", projectModalToggle);
+projectOverlay.addEventListener("click", projectModalToggle);
+imageViewerCloseBtn.addEventListener("click", imageViewerToggle);
+imageViewerOverlay.addEventListener("click", imageViewerToggle);
 
 
 
