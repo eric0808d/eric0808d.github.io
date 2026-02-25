@@ -738,6 +738,98 @@ main {
 }
 
 
+.project-modal-content {
+  width: 100%;
+  color: var(--white-2);
+}
+
+.project-modal-title {
+  color: var(--white-2);
+  font-size: clamp(1.55rem, 2.2vw, 2rem);
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.project-modal-description,
+.project-modal-summary,
+.project-modal-work {
+  color: var(--white-2);
+}
+
+.project-modal-description,
+.project-modal-summary {
+  margin-bottom: 12px;
+}
+
+.project-modal-featured {
+  position: relative;
+  width: 100%;
+  min-height: 260px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: hsl(240, 2%, 16%);
+  margin-bottom: 12px;
+  cursor: zoom-in;
+  display: grid;
+  place-items: center;
+}
+
+.project-modal-featured img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+}
+
+.project-modal-thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.project-thumb-btn {
+  border: 1px solid var(--jet);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+  background: var(--eerie-black-2);
+  cursor: pointer;
+}
+
+.project-thumb-btn img {
+  width: 100%;
+  height: 66px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-thumb-btn.active {
+  border-color: var(--orange-yellow-crayola);
+}
+
+.image-viewer-modal {
+  width: min(95vw, 1050px);
+  max-width: none;
+  padding: 20px;
+}
+
+.image-viewer-content {
+  width: 100%;
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  overflow: hidden;
+  background: hsl(240, 2%, 14%);
+}
+
+.image-viewer-content img {
+  width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+}
+
+
 /**
  * #clients 
  */
@@ -1047,6 +1139,12 @@ main {
   font-weight: var(--fw-400);
   text-transform: capitalize;
   line-height: 1.3;
+}
+
+
+.portfolio .testimonials-modal {
+  width: min(92vw, 920px);
+  max-width: none;
 }
 
 .project-category {
@@ -1618,6 +1716,11 @@ textarea.form-input::-webkit-resizer { display: none; }
   .testimonials-modal {
     gap: 35px;
     max-width: 680px;
+  }
+
+
+  .portfolio .testimonials-modal {
+    max-width: 920px;
   }
 
   .modal-avatar-box img { width: 80px; }

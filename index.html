@@ -658,7 +658,7 @@ Gestión de ventas, inventario y atención al cliente en emprendimientos propios
             </li>
 
             <li class="project-item active">
-              <button class="project-card-btn" type="button" data-project-open data-project-title="Dashboard de indicadores con Power BI" data-project-summary="Creación de un tablero ejecutivo para seguimiento de métricas de operación y ventas en tiempo real." data-project-work="Conexión y modelado de datos desde múltiples fuentes, diseño de medidas DAX, construcción de visualizaciones interactivas y publicación segura para distintos perfiles de usuario.">
+              <button class="project-card-btn" type="button" data-project-open data-project-title="Dashboard de indicadores con Power BI" data-project-summary="Creación de un tablero ejecutivo para seguimiento de métricas de operación y ventas en tiempo real." data-project-work="Conexión y modelado de datos desde múltiples fuentes, diseño de medidas DAX, construcción de visualizaciones interactivas y publicación segura para distintos perfiles de usuario." data-project-description="Galería rápida para compartir vistas del tablero con el cliente." data-project-gallery="./assets/images/project-1.jpg,./assets/images/project-4.png,./assets/images/project-5.png">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -685,17 +685,45 @@ Gestión de ventas, inventario y atención al cliente en emprendimientos propios
                 <ion-icon name="close-outline"></ion-icon>
               </button>
 
-              <div class="modal-content">
-                <h4 class="h3 modal-title" data-project-modal-title>Proyecto</h4>
+              <div class="modal-content project-modal-content">
+                <h4 class="h3 modal-title project-modal-title" data-project-modal-title>Proyecto</h4>
 
-                <p style="margin-bottom: 12px; color: var(--light-gray);" data-project-modal-summary>
+                <p class="project-modal-description" data-project-modal-description>
+                  Haz clic en una miniatura para ver la imagen completa.
+                </p>
+
+                <figure class="project-modal-featured" data-project-featured-trigger>
+                  <img src="./assets/images/project-1.jpg" alt="Vista del proyecto" data-project-featured-image>
+                </figure>
+
+                <div class="project-modal-thumbs" data-project-modal-thumbs></div>
+
+                <p class="project-modal-summary" data-project-modal-summary>
                   Resumen del proyecto.
                 </p>
 
-                <div data-project-modal-work>
+                <div class="project-modal-work" data-project-modal-work>
                   Lo que se hizo.
                 </div>
               </div>
+
+            </section>
+
+          </div>
+
+          <div class="modal-container" data-image-viewer-container>
+
+            <div class="overlay" data-image-viewer-overlay></div>
+
+            <section class="testimonials-modal image-viewer-modal">
+
+              <button class="modal-close-btn" data-image-viewer-close-btn>
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+
+              <figure class="image-viewer-content">
+                <img src="./assets/images/project-1.jpg" alt="Imagen completa del proyecto" data-image-viewer-img>
+              </figure>
 
             </section>
 

@@ -61,25 +61,87 @@ const projectModalContainer = document.querySelector("[data-project-modal-contai
 const projectModalCloseBtn = document.querySelector("[data-project-modal-close-btn]");
 const projectOverlay = document.querySelector("[data-project-overlay]");
 const projectModalTitle = document.querySelector("[data-project-modal-title]");
+const projectModalDescription = document.querySelector("[data-project-modal-description]");
 const projectModalSummary = document.querySelector("[data-project-modal-summary]");
 const projectModalWork = document.querySelector("[data-project-modal-work]");
+const projectFeaturedImage = document.querySelector("[data-project-featured-image]");
+const projectFeaturedTrigger = document.querySelector("[data-project-featured-trigger]");
+const projectModalThumbs = document.querySelector("[data-project-modal-thumbs]");
+const imageViewerContainer = document.querySelector("[data-image-viewer-container]");
+const imageViewerOverlay = document.querySelector("[data-image-viewer-overlay]");
+const imageViewerCloseBtn = document.querySelector("[data-image-viewer-close-btn]");
+const imageViewerImg = document.querySelector("[data-image-viewer-img]");
 
 const projectModalToggle = function () {
   projectModalContainer.classList.toggle("active");
   projectOverlay.classList.toggle("active");
 }
 
+const imageViewerToggle = function () {
+  imageViewerContainer.classList.toggle("active");
+  imageViewerOverlay.classList.toggle("active");
+}
+
+const renderProjectGallery = function (images, title) {
+  projectModalThumbs.innerHTML = "";
+
+  images.forEach((src, index) => {
+    const thumbBtn = document.createElement("button");
+    thumbBtn.type = "button";
+    thumbBtn.className = "project-thumb-btn";
+    thumbBtn.setAttribute("aria-label", `Ver imagen ${index + 1} de ${title}`);
+
+    if (index === 0) {
+      thumbBtn.classList.add("active");
+      projectFeaturedImage.src = src;
+      projectFeaturedImage.alt = `${title} - imagen principal`;
+    }
+
+    thumbBtn.innerHTML = `<img src="${src}" alt="${title} - miniatura ${index + 1}" loading="lazy">`;
+
+    thumbBtn.addEventListener("click", function () {
+      projectFeaturedImage.src = src;
+      projectFeaturedImage.alt = `${title} - imagen ${index + 1}`;
+
+      document.querySelectorAll(".project-thumb-btn").forEach((button) => {
+        button.classList.remove("active");
+      });
+
+      this.classList.add("active");
+    });
+
+    projectModalThumbs.append(thumbBtn);
+  });
+}
+
 projectCards.forEach((card) => {
   card.addEventListener("click", function () {
-    projectModalTitle.textContent = this.dataset.projectTitle;
+    const title = this.dataset.projectTitle;
+    const gallery = (this.dataset.projectGallery || "").split(",").map((img) => img.trim()).filter(Boolean);
+
+    projectModalTitle.textContent = title;
+    projectModalDescription.textContent = this.dataset.projectDescription || "Haz clic en una miniatura para ver la imagen completa.";
     projectModalSummary.textContent = this.dataset.projectSummary;
     projectModalWork.textContent = this.dataset.projectWork;
+
+    if (gallery.length) {
+      renderProjectGallery(gallery, title);
+    }
+
     projectModalToggle();
   });
 });
 
+projectFeaturedTrigger.addEventListener("click", function () {
+  imageViewerImg.src = projectFeaturedImage.src;
+  imageViewerImg.alt = projectFeaturedImage.alt;
+  imageViewerToggle();
+});
+
 projectModalCloseBtn.addEventListener("click", projectModalToggle);
 projectOverlay.addEventListener("click", projectModalToggle);
+imageViewerCloseBtn.addEventListener("click", imageViewerToggle);
+imageViewerOverlay.addEventListener("click", imageViewerToggle);
 
 
 
