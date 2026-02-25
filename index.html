@@ -177,7 +177,7 @@
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-target="portfolio" style="display: none;">Portfolio</button>
+            <button class="navbar-link" data-nav-link data-target="portfolio">Portfolio</button>
           </li>
 
           <li class="navbar-item" style="display: none;">
@@ -637,226 +637,95 @@ Gestión de ventas, inventario y atención al cliente en emprendimientos propios
         </header>
 
         <section class="projects">
+          <ul class="project-list">
 
-          <ul class="filter-list">
+            <li class="project-item active">
+              <button class="project-card-btn" type="button" data-project-open data-project-title="Intranet corporativa en SharePoint" data-project-summary="Implementación de una intranet moderna para centralizar comunicación interna, noticias y documentación del equipo." data-project-work="Diseño de arquitectura en SharePoint Online, desarrollo de componentes SPFx, configuración de permisos por área, y automatización de publicaciones con Power Automate." data-project-description="Galería del proyecto: haz clic en una miniatura para ver la imagen completa." data-project-gallery="./assets/images/project-1.jpg,./assets/images/project-2.png,./assets/images/project-3.jpg">
 
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-1.jpg" alt="Intranet corporativa en SharePoint" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Intranet corporativa en SharePoint</h3>
+
+              </button>
             </li>
 
-            <li class="filter-item">
-              <button data-filter-btn>Web design</button>
-            </li>
+            <li class="project-item active">
+              <button class="project-card-btn" type="button" data-project-open data-project-title="Dashboard de indicadores con Power BI" data-project-summary="Creación de un tablero ejecutivo para seguimiento de métricas de operación y ventas en tiempo real." data-project-work="Conexión y modelado de datos desde múltiples fuentes, diseño de medidas DAX, construcción de visualizaciones interactivas y publicación segura para distintos perfiles de usuario." data-project-description="Galería rápida para compartir vistas del tablero con el cliente." data-project-gallery="./assets/images/project-4.png,./assets/images/project-5.png,./assets/images/project-1.jpg">
 
-            <li class="filter-item">
-              <button data-filter-btn>Applications</button>
-            </li>
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
 
-            <li class="filter-item">
-              <button data-filter-btn>Web development</button>
+                  <img src="./assets/images/project-1.jpg" alt="Dashboard de indicadores con Power BI" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Dashboard de indicadores con Power BI</h3>
+
+              </button>
             </li>
 
           </ul>
 
-          <div class="filter-select-box">
+          <div class="modal-container" data-project-modal-container>
 
-            <button class="filter-select" data-select>
+            <div class="overlay" data-project-overlay></div>
 
-              <div class="select-value" data-selecct-value>Select category</div>
+            <section class="testimonials-modal">
 
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
+              <button class="modal-close-btn" data-project-modal-close-btn>
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+
+              <div class="modal-content project-modal-content">
+                <h4 class="h3 modal-title project-modal-title" data-project-modal-title>Proyecto</h4>
+
+                <p class="project-modal-description" data-project-modal-description>
+                  Haz clic en una miniatura para ver la imagen completa.
+                </p>
+
+                <figure class="project-modal-featured" data-project-featured-trigger>
+                  <img src="./assets/images/project-1.jpg" alt="Vista del proyecto" data-project-featured-image>
+                </figure>
+
+                <div class="project-modal-thumbs" data-project-modal-thumbs></div>
+
+                <p class="project-modal-summary" data-project-modal-summary>
+                  Resumen del proyecto.
+                </p>
+
+                <div class="project-modal-work" data-project-modal-work>
+                  Lo que se hizo.
+                </div>
               </div>
 
-            </button>
-
-            <ul class="select-list">
-
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web design</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Applications</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web development</button>
-              </li>
-
-            </ul>
+            </section>
 
           </div>
 
-          <ul class="project-list">
+          <div class="modal-container" data-image-viewer-container>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
+            <div class="overlay" data-image-viewer-overlay></div>
 
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
+            <section class="testimonials-modal image-viewer-modal">
 
-                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
-                </figure>
+              <button class="modal-close-btn" data-image-viewer-close-btn>
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
 
-                <h3 class="project-title">Finance</h3>
+              <figure class="image-viewer-content">
+                <img src="./assets/images/project-1.jpg" alt="Imagen completa del proyecto" data-image-viewer-img>
+              </figure>
 
-                <p class="project-category">Web development</p>
+            </section>
 
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Orizon</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Fundo</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Brawlhalla</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
-                </figure>
-
-                <h3 class="project-title">DSM.</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">MetaSpark</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Summary</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Task Manager</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Arrival</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-          </ul>
+          </div>
 
         </section>
 
