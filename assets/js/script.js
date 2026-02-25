@@ -71,6 +71,7 @@ const imageViewerContainer = document.querySelector("[data-image-viewer-containe
 const imageViewerOverlay = document.querySelector("[data-image-viewer-overlay]");
 const imageViewerCloseBtn = document.querySelector("[data-image-viewer-close-btn]");
 const imageViewerImg = document.querySelector("[data-image-viewer-img]");
+const projectDefaultImage = "./assets/images/project-1.jpg";
 
 const projectModalToggle = function () {
   projectModalContainer.classList.toggle("active");
@@ -85,6 +86,15 @@ const imageViewerToggle = function () {
 const renderProjectGallery = function (images, title) {
   projectModalThumbs.innerHTML = "";
 
+  if (!images.length) {
+    projectFeaturedImage.src = projectDefaultImage;
+    projectFeaturedImage.alt = `${title} - imagen principal`;
+    return;
+  }
+
+  projectFeaturedImage.src = images[0];
+  projectFeaturedImage.alt = `${title} - imagen principal`;
+
   images.forEach((src, index) => {
     const thumbBtn = document.createElement("button");
     thumbBtn.type = "button";
@@ -93,8 +103,6 @@ const renderProjectGallery = function (images, title) {
 
     if (index === 0) {
       thumbBtn.classList.add("active");
-      projectFeaturedImage.src = src;
-      projectFeaturedImage.alt = `${title} - imagen principal`;
     }
 
     thumbBtn.innerHTML = `<img src="${src}" alt="${title} - miniatura ${index + 1}" loading="lazy">`;
@@ -103,7 +111,7 @@ const renderProjectGallery = function (images, title) {
       projectFeaturedImage.src = src;
       projectFeaturedImage.alt = `${title} - imagen ${index + 1}`;
 
-      document.querySelectorAll(".project-thumb-btn").forEach((button) => {
+      projectModalThumbs.querySelectorAll(".project-thumb-btn").forEach((button) => {
         button.classList.remove("active");
       });
 
@@ -124,9 +132,7 @@ projectCards.forEach((card) => {
     projectModalSummary.textContent = this.dataset.projectSummary;
     projectModalWork.textContent = this.dataset.projectWork;
 
-    if (gallery.length) {
-      renderProjectGallery(gallery, title);
-    }
+    renderProjectGallery(gallery, title);
 
     projectModalToggle();
   });
